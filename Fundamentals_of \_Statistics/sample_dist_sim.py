@@ -28,3 +28,20 @@ def lecture1(sample_size=128, nb_studies=1000):
 	histo((p1,p2))
 
 lecture1(nb_studies=5000)
+
+
+def lecture2_7(f, n_max = 100):
+    # param f: a bounded function
+    # X_n ~ B(1/n) Bernouilli r.v.
+    E_f_x_n = np.zeros(n_max)
+    for n in range(1, n_max):
+        E_f_x_n[n] = f(1)/n + f(0)*(1-1/n)
+    fig, ax = plt.subplots(1, 1)
+    ax.plot(range(n_max), E_f_x_n, label='E(cos(Xn))')
+    ax.legend()
+    ax.set_xlabel('n')
+    ax.set_ylabel('Expectation')
+    ax.set_title('Lecture 2-7  X_i ~ B(1/n) Convergence in distribution of E[f(Xn)]')
+    ax.plot(range(n_max), np.ones(n_max), linestyle=':')
+    plt.show()
+lecture2_7(np.cos)
