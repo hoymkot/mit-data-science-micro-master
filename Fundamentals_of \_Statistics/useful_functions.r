@@ -6,3 +6,9 @@ wald_test_ gaussian <- function(data, hypo) {
   w = t(d) %*% I %*% d * length(data)  
   return(w)
 }
+
+WelchSatterthwaite <- function(sx, sy, nx, my) {
+  num = (sx/nx + sy/my)^2
+  den = (sx/nx)^2/(nx-1) + (sy/my)^2/(my-1); 
+  return (num/den);
+}
