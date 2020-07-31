@@ -12,3 +12,16 @@ WelchSatterthwaite <- function(sx, sy, nx, my) {
   den = (sx/nx)^2/(nx-1) + (sy/my)^2/(my-1); 
   return (num/den);
 }
+
+ks.statistic <- function(x){
+  x <- sort(x)  # reordered sample 
+  n <- length(x)
+  i <- 1:n
+
+  max(
+    max(abs((i-1)/n - punif(x))), 
+    max(abs(i/n - punif(x)))
+    ) * sqrt(n)
+}
+x = c(0.8,0.7,0.4,0.7,0.2)
+ks.statistic(x)
